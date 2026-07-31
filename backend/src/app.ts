@@ -11,7 +11,7 @@ app.use(express.json());
 app.get("/", (_req, res) => {
   res.json({
     success: true,
-    message: "Dataset Explorer API Running 🚀",
+    message: "Dataset Explorer API Running",
   });
 });
 

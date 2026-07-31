@@ -1,6 +1,6 @@
 import api from "./axios";
 
-export const getDatasets = (params: any) =>
+export const getDatasets = (params?: any) =>
   api.get("/datasets", { params });
 
 export const getDataset = (id: string) =>

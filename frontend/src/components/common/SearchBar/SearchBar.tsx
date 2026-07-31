@@ -9,7 +9,7 @@ const SearchBar = ({ value, onSearch }: Props) => {
     return (
         <Input
             value={value}
-            onChange={onSearch}
+            onChange={(e) => onSearch(e.target.value)}
             placeholder="Search datasets..."
         />
     );

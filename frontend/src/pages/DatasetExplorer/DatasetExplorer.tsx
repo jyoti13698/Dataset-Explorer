@@ -77,9 +77,6 @@ const DatasetExplorer = () => {
     };
 
 
-    /**
-     * Reload data when filters/page change
-     */
     useEffect(() => {
         loadData();
     }, [page, debouncedSearch, selectedCategory]);

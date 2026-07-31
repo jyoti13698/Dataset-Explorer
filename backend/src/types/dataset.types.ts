@@ -4,7 +4,7 @@ export interface Resource {
   url: string;
   size: string;
 }
-export interface Dataset {
+export interface IDataset {
   _id: string;
   title: string;
   slug: string;
