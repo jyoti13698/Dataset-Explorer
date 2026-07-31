@@ -1,13 +1,27 @@
 import "./DatasetTable.scss";
 import { useNavigate } from "react-router-dom";
 import type { Dataset } from "../../../types/dataset.types";
+import Button from "../../common/Button";
+import Badge from "../../common/Badge";
+import NoDataFound from "../../../pages/NotFound/NotFound";
+
 
 type Props = {
     datasets: Dataset[];
+    onClearFilters?: () => void;
 };
 
-const DatasetTable = ({ datasets }: Props) => {
+const DatasetTable = ({ datasets, onClearFilters }: Props) => {
     const navigate = useNavigate();
+
+    if (!datasets.length) {
+        return (
+            <NoDataFound
+                onButtonClick={onClearFilters}
+            />
+        );
+    }
+
     return (
         <div className="dataset-table">
             <table>
@@ -33,26 +47,22 @@ const DatasetTable = ({ datasets }: Props) => {
                             </td>
 
                             <td>
-                                <span className="badge">
-                                    {dataset.category}
-                                </span>
+                                <Badge text={dataset.category} />
                             </td>
 
                             <td>{dataset.organization}</td>
 
                             <td>{dataset.year}</td>
 
-                            <td>
-                                {dataset.featured ? "⭐" : "-"}
-                            </td>
+                            <td>{dataset.featured ? "⭐" : "-"}</td>
 
                             <td>
-                                <button
-                                    className="view-btn"
+                                <Button
+                                    type="button"
                                     onClick={() => navigate(`/datasets/${dataset._id}`)}
                                 >
                                     View
-                                </button>
+                                </Button>
                             </td>
                         </tr>
                     ))}

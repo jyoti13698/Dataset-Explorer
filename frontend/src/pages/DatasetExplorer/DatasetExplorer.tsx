@@ -20,6 +20,8 @@ const DatasetExplorer = () => {
     const [organizations, setOrganizations] = useState<string[]>([]);
 
     const [search, setSearch] = useState("");
+    const [debouncedSearch, setDebouncedSearch] = useState("");
+
     const [selectedCategory, setSelectedCategory] = useState("");
 
     const [page, setPage] = useState(1);
@@ -30,40 +32,68 @@ const DatasetExplorer = () => {
         totalRecords: 0
     });
 
+
+    /**
+     * Debounce search input
+     */
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearch(search);
+            setPage(1);
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [search]);
+
+
     const loadData = async () => {
         try {
-            const [datasetRes, categoryRes, organizationRes] = await Promise.all([
-                getDatasets({
-                    page,
-                    pageSize: 10,
-                    search,
-                    category: selectedCategory
-                }),
-                getCategories(),
-                getOrganizations()
-            ]);
+            const [datasetRes, categoryRes, organizationRes] =
+                await Promise.all([
+                    getDatasets({
+                        page,
+                        pageSize: 10,
+                        search: debouncedSearch,
+                        category: selectedCategory
+                    }),
+                    getCategories(),
+                    getOrganizations()
+                ]);
+
 
             setDatasets(datasetRes.data.data.datasets);
+
             setPagination(datasetRes.data.data.pagination);
 
             setCategories(categoryRes.data.data);
+
             setOrganizations(organizationRes.data.data);
+
         } catch (error) {
             console.error("Error loading datasets:", error);
         }
     };
 
+
+    /**
+     * Reload data when filters/page change
+     */
     useEffect(() => {
         loadData();
-    }, [page, search, selectedCategory]);
+    }, [page, debouncedSearch, selectedCategory]);
+
 
     return (
         <MainLayout>
+
             <DatasetStats
                 datasets={datasets}
                 categories={categories}
                 organizations={organizations}
             />
+
 
             <DatasetFilters
                 search={search}
@@ -76,13 +106,18 @@ const DatasetExplorer = () => {
                 }}
             />
 
-            <DatasetTable datasets={datasets} />
+
+            <DatasetTable
+                datasets={datasets}
+            />
+
 
             <Pagination
                 page={pagination.page}
                 totalPages={pagination.totalPages}
                 onPageChange={setPage}
             />
+
         </MainLayout>
     );
 };

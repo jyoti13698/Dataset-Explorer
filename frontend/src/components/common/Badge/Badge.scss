@@ -1,17 +1,60 @@
 .badge {
     display: inline-flex;
-
     align-items: center;
-
+    justify-content: center;
     padding: 6px 12px;
-
-    background: #dbeafe;
-
-    color: #2563eb;
-
     border-radius: 999px;
-
     font-size: 12px;
-
     font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge.blue {
+    background: #DBEAFE;
+    color: #1D4ED8;
+}
+
+.badge.green {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.badge.purple {
+    background: #EDE9FE;
+    color: #6D28D9;
+}
+
+.badge.orange {
+    background: #FFEDD5;
+    color: #C2410C;
+}
+
+.badge.red {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+.badge.pink {
+    background: #FCE7F3;
+    color: #BE185D;
+}
+
+.badge.cyan {
+    background: #CFFAFE;
+    color: #0F766E;
+}
+
+.badge.indigo {
+    background: #E0E7FF;
+    color: #4338CA;
+}
+
+.badge.amber {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.badge.teal {
+    background: #CCFBF1;
+    color: #0F766E;
 }

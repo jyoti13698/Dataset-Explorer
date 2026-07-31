@@ -56,6 +56,23 @@ const datasetSchema = new mongoose.Schema(
       required: true,
     },
 
+    source: {
+  type: String,
+  required: true,
+  trim: true,
+},
+
+geography: {
+  type: String,
+  required: true,
+  trim: true,
+},
+
+year: {
+  type: Number,
+  required: true,
+},
+
     tags: [
       {
         type: String,

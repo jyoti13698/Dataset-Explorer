@@ -1,21 +1,11 @@
-import type { ChangeEvent } from "react";
-import "./Index.scss";
+import './Index.scss'
+type Props = React.InputHTMLAttributes<HTMLInputElement>;
 
-type Props = {
-    value: string;
-    onChange: (value: string) => void;
-    placeholder?: string;
-};
-
-const Input = ({ value, onChange, placeholder }: Props) => {
+const Input = (props: Props) => {
     return (
         <input
             className="app-input"
-            value={value}
-            placeholder={placeholder}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                onChange(e.target.value)
-            }
+            {...props}
         />
     );
 };

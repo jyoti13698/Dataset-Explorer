@@ -1,0 +1,169 @@
+.about-page {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.about-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
+}
+
+.about-hero h1 {
+    font-size: 40px;
+    margin-bottom: 16px;
+    color: #1e293b;
+}
+
+.about-hero p {
+    max-width: 760px;
+    color: #64748b;
+    line-height: 1.8;
+}
+
+.about-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.info-card {
+    padding: 30px;
+}
+
+.info-card svg {
+    color: #2563eb;
+    margin-bottom: 18px;
+}
+
+.info-card h3 {
+    margin-bottom: 12px;
+}
+
+.info-card p,
+.info-card li {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.info-card ul {
+    margin-top: 12px;
+    padding-left: 18px;
+}
+
+.section-title {
+    font-size: 30px;
+    color: #1e293b;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.feature-card {
+    padding: 28px;
+    transition: .25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+}
+
+.feature-card .icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    margin-bottom: 18px;
+}
+
+.feature-card h3 {
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.edge-card {
+    padding: 32px;
+}
+
+.edge-card h2 {
+    margin-bottom: 24px;
+}
+
+.edge-list {
+    margin-top: 16px;
+    padding-left: 20px;
+
+    li {
+        color: #475569;
+        margin-bottom: 10px;
+        line-height: 1.7;
+        font-size: 15px;
+    }
+
+    li::marker {
+        color: #2563eb;
+    }
+}
+
+@media(max-width:992px) {
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .edge-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:768px) {
+
+    .about-page {
+        gap: 24px;
+    }
+
+    .about-hero {
+        padding: 24px;
+    }
+
+    .about-hero h1 {
+        font-size: 30px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+}

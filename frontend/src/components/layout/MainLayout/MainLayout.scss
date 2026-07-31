@@ -1,22 +1,45 @@
 .layout {
-    display: flex;
     min-height: 100vh;
-    background: #f7f9fc;
+    background: #f8fafc;
 }
+
 
 .layout__content {
-    flex: 1;
+
+    margin-left: 270px;
+
+    min-height: 100vh;
+
     padding: 32px;
-    display: flex;
-    flex-direction: column;
+
+    overflow-x: hidden;
 }
+
 
 main {
-    flex: 1;
+    width: 100%;
 }
 
-@media(max-width:768px) {
+
+
+@media(max-width:1024px) {
+
     .layout__content {
-        padding: 18px;
+        margin-left: 220px;
+        padding: 24px;
     }
+
+}
+
+
+
+@media(max-width:768px) {
+
+    .layout__content {
+
+        margin-left: 80px;
+
+        padding: 16px;
+    }
+
 }

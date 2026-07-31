@@ -1,32 +1,27 @@
-export interface IResource {
+export interface Resource {
   name: string;
   format: string;
   url: string;
-  size?: string;
+  size: string;
 }
-
-export interface IDataset {
+export interface Dataset {
+  _id: string;
   title: string;
   slug: string;
   description: string;
-
   category: string;
-
   organization: string;
-
+  source: string;
+  geography: string;
+  year: number;
   tags: string[];
-
-  resources: IResource[];
-
+  resources: Resource[];
   license: string;
-
   updateFrequency: string;
-
   downloads: number;
-
   views: number;
-
   featured: boolean;
-
-  status: "active" | "inactive";
+  status: string;
+  createdAt: string;
+  updatedAt: string;
 }

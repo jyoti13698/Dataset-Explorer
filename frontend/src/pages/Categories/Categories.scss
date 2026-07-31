@@ -1,0 +1,128 @@
+.categories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.categories-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.categories-header p {
+    color: #64748b;
+}
+
+.categories-count {
+    padding: 10px 18px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.categories-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.category-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 24px;
+    transition: .25s;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+}
+
+.category-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.category-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.category-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #64748b;
+    flex: 1;
+}
+
+.category-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.category-footer span {
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.category-footer button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.category-footer button:hover {
+    background: #1d4ed8;
+}
+
+@media(max-width:768px) {
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categories-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .category-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .category-footer button {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

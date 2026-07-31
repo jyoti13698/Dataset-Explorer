@@ -1,9 +1,4 @@
-.dataset-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    margin-bottom: 32px;
-}
+
 
 .stats-card {
     display: flex;
@@ -66,7 +61,20 @@
     color: #0f172a;
 }
 
-@media(max-width:768px) {
+.dataset-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+@media(max-width:1024px) {
+    .dataset-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:767px) {
     .dataset-stats {
         grid-template-columns: 1fr;
     }

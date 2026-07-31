@@ -1,3 +1,7 @@
+import Input from "../../common/Input/Input";
+import Select from "../../common/Select/Select";
+import './DatasetFilters.scss'
+
 type Props = {
     search: string;
     onSearch: (value: string) => void;
@@ -14,26 +18,35 @@ const DatasetFilters = ({
     onCategoryChange
 }: Props) => {
     return (
-        <div className="filters">
-            <input
-                placeholder="Search datasets..."
-                value={search}
-                onChange={(e) => onSearch(e.target.value)}
-            />
+        <section className="dataset-filters">
 
-            <select
-                value={selectedCategory}
-                onChange={(e) => onCategoryChange(e.target.value)}
-            >
-                <option value="">All Categories</option>
+            <div className="filters-left">
+                <Input
+                    placeholder="🔍 Search datasets..."
+                    value={search}
+                    onChange={(e) => onSearch(e.target.value)}
+                />
+            </div>
 
-                {categories.map(category => (
-                    <option key={category}>
-                        {category}
-                    </option>
-                ))}
-            </select>
-        </div>
+            <div className="filters-right">
+                <Select
+                    value={selectedCategory}
+                    onChange={(e) => onCategoryChange(e.target.value)}
+                >
+                    <option value="">All Categories</option>
+
+                    {categories.map((category) => (
+                        <option
+                            key={category}
+                            value={category}
+                        >
+                            {category}
+                        </option>
+                    ))}
+                </Select>
+            </div>
+
+        </section>
     );
 };
 

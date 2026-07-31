@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import type { Dataset } from "../../types/dataset.types";
 
 import "./DatasetDetails.scss";
+import Loader from "../../components/common/Loader";
+import Badge from "../../components/common/Badge";
+import NoDataFound from "../NotFound/NotFound";
+import Card from "../../components/common/Card";
 
 const DatasetDetails = () => {
     const navigate = useNavigate();
@@ -16,48 +20,34 @@ const DatasetDetails = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const loadDataset = async () => {
+            try {
+                const response = await getDatasetById(id!);
+                setDataset(response.data.data);
+            } finally {
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000);
+            }
+        };
 
-        if (id) {
-            loadDataset(id);
-        }
-
+        loadDataset();
     }, [id]);
 
-    const loadDataset = async (datasetId: string) => {
-
-        try {
-
-            const response = await getDatasetById(datasetId);
-
-            setDataset(response.data.data);
-
-        } catch (error) {
-
-            console.error(error);
-
-        } finally {
-
-            setLoading(false);
-
-        }
-
-    };
 
     if (loading) {
-
         return (
             <MainLayout>
-                Loading...
+                <Loader />
             </MainLayout>
         );
-
     }
 
     if (!dataset) {
 
         return (
             <MainLayout>
-                Dataset not found
+               <NoDataFound />
             </MainLayout>
         );
 
@@ -79,10 +69,7 @@ const DatasetDetails = () => {
                 <section className="hero">
 
                     <div>
-
-                        <span className="badge">
-                            {dataset.category}
-                        </span>
+                        <Badge text={dataset.category} />
 
                         <h1>{dataset.title}</h1>
 
@@ -93,63 +80,88 @@ const DatasetDetails = () => {
                 </section>
 
                 <section className="content">
+                    <Card className="card" children={ 
+                        <>
+                            <h2>Description</h2>
 
-                    <div className="card">
+                            <p>{dataset.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, quidem placeat quas recusandae ut asperiores dolore neque magnam. Laudantium tempore cum nihil a placeat perspiciatis dignissimos deserunt sapiente aperiam expedita.</p>
+                        </>
+                    } />
 
-                        <h2>Description</h2>
+                    <Card className="card" children={
+                        <>
+                            <h2>Tags</h2>
+                            <div className="tags">
+                                {dataset.tags.map((tag) => (
+                                    <span key={tag}>
+                                        {tag}
+                                    </span>
 
-                        <p>{dataset.description}</p>
+                                ))}
 
-                    </div>
-
-                    <div className="card">
-
-                        <h2>Tags</h2>
-
-                        <div className="tags">
-
-                            {dataset.tags.map((tag) => (
-
-                                <span key={tag}>
-                                    {tag}
-                                </span>
-
-                            ))}
-
-                        </div>
-
-                    </div>
-
-                    <div className="card">
-
-                        <h2>Dataset Information</h2>
-
-                        <div className="info">
-
-                            <div>
-                                <label>Organization</label>
-                                <span>{dataset.organization}</span>
                             </div>
+                        </>
+                    } />
 
-                            <div>
-                                <label>Category</label>
-                                <span>{dataset.category}</span>
+                    <Card className={"card"} children={
+                        <>
+                            <h2>Dataset Information</h2>
+
+                            <div className="info">
+
+                                <div>
+                                    <label>Organization</label>
+                                    <span>{dataset.organization}</span>
+                                </div>
+
+                                <div>
+                                    <label>Category</label>
+                                    <span>{dataset.category}</span>
+                                </div>
+
+                                <div>
+                                    <label>Year</label>
+                                    <span>{dataset.year}</span>
+                                </div>
+
+                                <div>
+                                    <label>Featured</label>
+                                    <span>{dataset.featured ? "Yes" : "No"}</span>
+                                </div>
+
+                                <div>
+                                    <label>License</label>
+                                    <span>{dataset.license}</span>
+                                </div>
+
+                                <div>
+                                    <label>Geography</label>
+                                    <span>{dataset.geography}</span>
+                                </div>
+                                <div>
+                                    <label>Source</label>
+                                    <span>{dataset.source}</span>
+                                </div>
+                                <div>
+                                    <label>File Name</label>
+                                    <span>{dataset.resources[0]?.name}</span>
+                                </div>
+                                <div>
+                                    <label>File Format</label>
+                                    <span>{dataset.resources[0]?.format}</span>
+                                </div>
+                                <div>
+                                    <label>Website</label>
+                                    <span>{dataset.resources[0]?.url}</span>
+                                </div>
+                                <div>
+                                    <label>Update Frequency</label>
+                                    <span>{dataset.updateFrequency}</span>
+                                </div>
+
                             </div>
-
-                            <div>
-                                <label>Year</label>
-                                <span>{dataset.year}</span>
-                            </div>
-
-                            <div>
-                                <label>Featured</label>
-                                <span>{dataset.featured ? "Yes" : "No"}</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                        </>
+                    } />
                 </section>
 
             </div>

@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 
 import Card from "../../common/Card";
+import './DaatsetStats.scss'
 
 type Props = {
     datasets: any[];
