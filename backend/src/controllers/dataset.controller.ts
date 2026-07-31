@@ -32,8 +32,10 @@ export const getAllDatasets = async (
     res.status(200).json({
       success: true,
       message: "Datasets fetched successfully",
-      data: result.datasets,
-      pagination: result.pagination,
+      data: {
+        datasets: result.datasets,
+        pagination: result.pagination,
+      },
     });
   } catch (error: any) {
     res.status(500).json({

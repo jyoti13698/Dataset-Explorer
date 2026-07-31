@@ -1,0 +1,9 @@
+@use "../../../styles/variables" as *;
+
+.app-select {
+    width: 220px;
+    padding: 12px;
+    border-radius: $radius;
+    border: 1px solid $border;
+    background: white;
+}

@@ -1,0 +1,14 @@
+@use "../../../styles/variables" as *;
+
+.app-button {
+    padding: 12px 24px;
+    background: $primary;
+    color: white;
+    border-radius: $radius;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.app-button:hover {
+    background: $primary-dark;
+}

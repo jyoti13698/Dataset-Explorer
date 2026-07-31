@@ -1,0 +1,73 @@
+.dataset-table {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .06);
+}
+
+.dataset-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dataset-table th {
+    padding: 18px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f8fafc;
+    color: #475569;
+}
+
+.dataset-table td {
+    padding: 18px;
+    border-top: 1px solid #edf2f7;
+    vertical-align: top;
+}
+
+.dataset-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+.dataset-name h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.dataset-name p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 30px;
+    background: #e8f0ff;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.view-btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 992px) {
+    .dataset-table {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 900px;
+    }
+}
