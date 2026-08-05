@@ -89,6 +89,7 @@ const DatasetExplorer = () => {
                 datasets={datasets}
                 categories={categories}
                 organizations={organizations}
+                total={pagination}
             />
 
 

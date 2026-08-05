@@ -12,12 +12,14 @@ type Props = {
     datasets: any[];
     categories: string[];
     organizations: string[];
+    total: any;
 };
 
 const DatasetStats = ({
     datasets,
     categories,
-    organizations
+    organizations, 
+    total
 }: Props) => {
     return (
         <section className="dataset-stats">
@@ -29,7 +31,7 @@ const DatasetStats = ({
 
                 <div>
                     <p>Total Datasets</p>
-                    <h2>{datasets.length}</h2>
+                    <h2>{total?.total}</h2>
                 </div>
             </Card>
 
